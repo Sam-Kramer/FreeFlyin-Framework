@@ -15,6 +15,10 @@ class PublicRegistry {
 		return self::$registry->dispatch($module);
 	}
 
+    public static function importConfig($config) {
+        self::$registry->importConfig($config); 
+    }
+
     public static function importJs($js, $location = '') {
         self::$registry->importJs($js, $location);
     }

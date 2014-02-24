@@ -19,6 +19,12 @@ class Registry {
 		return (array_key_exists($module, $this->modules)) ? $this->modules[$module] : null;
 	}
 
+    public function importConfig($config) {
+        if(file_exists(($path = ROOT . DS . 'conf' . DS . $config. '.php'))) {
+            require_once $path;
+        } 
+    }
+
     public function importCss($css, $location = '') {
         if($location == '')
             $location = MEDIA.'/css/';

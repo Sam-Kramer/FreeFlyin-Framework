@@ -1,36 +1,39 @@
 <?php
 class MysqlStub extends Module {
 
-	public function __construct($mysql_host = MYSQL_HOST, $mysql_user = MYSQL_USERNAME, $mysql_password = MYSQL_PASSWORD, $mysql_db = MYSQL_DATABASE) {
-		mysql_pconnect($mysql_host, $mysql_user, $mysql_password) or die(mysql_error());
-		mysql_select_db($mysql_db) or die (mysql_error());
+	private $db;
+
+	public function __construct($args) {
+		if(!is_array($args))
+			$this->db = new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE);
+		else
+			$this->db = new mysqli($args[0], $args[1], $args[2], $args[3]);
 	}
 	
-
 	public function query($query) {
-		return mysql_query($query);
+		return $this->db->query($query);
 	}
 
     public function fetch($query) {
         $result = $this->query($query);
-        $data = mysql_fetch_assoc($result);
-        mysql_free_result($result);
+        $data = $result->fetch_assoc();
+        $this->db->free();
         return $data;
     }
 
 	public function fetchArray($query) {
 		$data = array();
 		$result = $this->query($query);
-		while($row = mysql_fetch_assoc($result)) {
+		while($row = $result->fetch_assoc()) {
 			$data[] = $row;
 		}
-		mysql_free_result($result);
+		$result->free();
 		return $data;
 	}
 
     public function countRows($query) {
-        $result = mysql_query($query);
-        return mysql_num_rows($result);
+        $result = $this->query($query);
+        return $result->num_rows;
     }
 }
 ?>

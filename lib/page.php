@@ -8,11 +8,16 @@ abstract class Page {
     protected $widget = array();
     protected $registry;
     protected $html;
+    protected $params; 
 
 	public final function __construct() {
 		$this->registry = new Registry();
         $this->html = $this->registry->register('HtmlModule');
         $this->template['data'] = array();
+        if(isset($_GET['url']))
+            $this->params = $_GET['url'];
+        else
+            $this->params = null;
 		$this->beforeLoad();
 		$this->onLoad();
 	}
@@ -32,6 +37,7 @@ abstract class Page {
      */
     protected function redirect($location) {
         header('Location: ' . $location);
+        die();
     }
 
     /**
