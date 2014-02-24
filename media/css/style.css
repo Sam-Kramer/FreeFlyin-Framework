@@ -1,0 +1,84 @@
+html, body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-family: 'Droid Serif', serif;
+	font-size: 32px;
+	font-weight: normal;
+	color: #333;
+	padding: 0;
+	margin: 0;
+}
+
+h2 {
+	font-family: 'Droid Sans', sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+	line-height: 25px;
+	color: #555;
+	padding: 0;
+	margin: 0;
+}
+
+h2 a {
+	color: #0033FF;
+	text-decoration: none;
+}
+
+p {
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 13px;
+	line-height: 25px;
+	color: #555;
+	padding: 0;
+	margin: 0;
+}
+
+p a {
+	color: #0033FF;
+	text-decoration: none;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#header {
+	width: 100%;
+	height: 50px;
+	background: #538BAC;
+}
+
+#header li {
+	padding: 0 0 0 20px;
+	margin: 0;
+	float: left;
+}
+
+#header li a {
+	font-family: 'Droids Sans', sans-serif;
+	font-size: 24px;
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	height: 30px;
+	padding: 10px;
+}
+
+#header li a:hover {
+	background: #467693;
+}
+
+#body {
+	width: 800px;
+	padding: 0 0 0 20px;
+}
+
+#footer {
+	padding: 0 0 0 20px;
+}
